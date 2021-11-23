@@ -1,18 +1,19 @@
 <script>
+	import Seed from "./Seed.svelte";
 	export let name;
 </script>
 
 <main>
-	<h1>Hello {name}! Plants</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Hello {name} Plants!</h1>
+	<Seed/>
 </main>
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
+		padding: 0;
 		max-width: 240px;
-		margin: 0 auto;
+		margin: 0;
 	}
 
 	h1 {
@@ -20,6 +21,9 @@
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
+		background-color: aliceblue;
+		width: 100vw;
+		position: fixed;
 	}
 
 	@media (min-width: 640px) {
