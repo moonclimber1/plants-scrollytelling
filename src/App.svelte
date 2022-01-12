@@ -4,8 +4,10 @@
 </script>
 
 <main>
-	<h1>Hello {name} Plants!</h1>
+	
+	<div id="background"></div>
 	<Seed/>
+	
 </main>
 
 <style>
@@ -24,6 +26,15 @@
 		background-color: aliceblue;
 		width: 100vw;
 		position: fixed;
+	}
+
+	#background{
+		width: 100%;
+		height: 100%;
+		position: fixed;
+
+		background-image: url('/images/paper-background-1.jpeg');
+		background-size: cover;
 	}
 
 	@media (min-width: 640px) {
