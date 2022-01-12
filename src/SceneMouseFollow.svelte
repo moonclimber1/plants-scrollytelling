@@ -1,7 +1,7 @@
 <script>
 	import Seed from "./Seed.svelte";
-    import PaperBackground from "./PaperBackground.svelte"
+    import ImageBackground from "./ImageBackground.svelte"
 </script>
 
-<PaperBackground/>
+<ImageBackground imagePath='/images/paper-background-1.jpeg' />
 <Seed/>
