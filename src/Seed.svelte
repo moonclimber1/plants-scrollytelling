@@ -50,8 +50,6 @@
         position: absolute;
         top: -50px;
         left: -35px;
-
-        
     }
 
 </style>
