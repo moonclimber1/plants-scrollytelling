@@ -7,11 +7,14 @@
 
 <style>
 	#background{
-		width: 100%;
-		height: 100%;
-		position: fixed;
+		width: 3000vw;
+		height: 3000vh;
+		position: absolute;
+		top: 0;
 
-		background-image: var(--image-path);
-		background-size: cover;
+		background-image: url("/images/paper-background-1.jpeg");
+		background-repeat: repeat;
+		background-size: 2%;
+		/* background-size: cover; */
 	}
 </style>
