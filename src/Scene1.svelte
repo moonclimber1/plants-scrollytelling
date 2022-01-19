@@ -31,17 +31,11 @@
         snap: false,
         end: () => "+=" + window.innerWidth * 3,
         onUpdate: (self) => {
+          overlayVisible = (self.progress > 0.03) ? false : true;
+          birdSceneVisible = (self.progress == 1) ? true : false;
+        
           if (self.progress < 0.33) {
             seedAnimationState = Math.floor(self.progress * 3 * 6.99);
-          }
-
-          if (self.progress > 0.04) {
-            overlayVisible = false;
-          }
-          if (self.progress == 1) {
-            birdSceneVisible = true;
-          } else {
-            birdSceneVisible = false;
           }
         },
       },

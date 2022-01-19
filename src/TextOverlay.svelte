@@ -10,7 +10,7 @@
 <style>
   h2 {
     position: fixed;
-    top: 80vh;
+    top: 82vh;
     width: 100vw;
 
     margin: 0;

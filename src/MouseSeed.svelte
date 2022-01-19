@@ -39,8 +39,11 @@
         width: 100%;
         height: 100%;
         position: fixed;
+        top: 0;
 
         mix-blend-mode:multiply;
+
+        z-index: 100;
     }
 
     img{

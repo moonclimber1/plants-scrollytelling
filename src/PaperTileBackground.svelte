@@ -19,9 +19,11 @@
 		position: absolute;
 		top: 0;
 
-		background-image: url("/images/paper-tile-1.jpeg");
+		background-image: url("/images/paper-tile-5.jpeg");
 		background-repeat: repeat;
 		background-size: var(--size);
+
+		opacity: 0.8;
 		/* background-size: cover; */
 	}
 </style>

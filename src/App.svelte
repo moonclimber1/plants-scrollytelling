@@ -2,12 +2,14 @@
 	import SceneMouseFollow from "./SceneMouseFollow.svelte";
 	import PathAnimation from "./PathAnimation.svelte";
 	import Scene1 from "./Scene1.svelte";
+	import LandscapeScene from "./LandscapeScene.svelte";
 </script>
 
 <main>
 	<!-- <SceneMouseFollow/> -->
 	<!-- <PathAnimation/> -->
-	<Scene1/>
+	<!-- <Scene1/> -->
+	<LandscapeScene/>
 </main>
 
 <style>
