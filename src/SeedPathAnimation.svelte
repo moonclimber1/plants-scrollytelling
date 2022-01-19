@@ -1,6 +1,5 @@
 <script>
-  export let animationState = 0;
-  var seedImages = ["./images/Lavendel_sad.png", "./images/Lavendel_sad_very.png"];
+  export let seedAnimationState = 0;
 
   // Imports
   import { gsap } from "gsap";
@@ -8,6 +7,7 @@
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
   import { CustomEase } from "gsap/CustomEase";
   import { onMount } from "svelte";
+  import Seed from "./Seed.svelte";
 
   // init gsap
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin, CustomEase);
@@ -17,11 +17,7 @@
       motionPath: { path: "#lavendel-jump-path", align: "#lavendel-jump-path" },
       scrollTrigger: {
         trigger: "#seed-img",
-        // once: true,
-        // start: () => "+=" + -300,
         start: () => "top top+=" + 1,
-        // start: "center left",
-        // markers: true,
         pin: false,
         scrub: 1,
         snap: false,
@@ -31,9 +27,7 @@
   });
 </script>
 
-<div id="seed-wrapper">
-  <img id="seed-img" src={seedImages[animationState]} alt="Seed" />
-</div>
+<Seed animationState={seedAnimationState}/>
 
 <svg width="100vw" viewBox="0 0 5331 1908" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
@@ -72,5 +66,7 @@
     position: absolute;
     top: 20vh;
     left: 30vw;
+
+    /* opacity: 0; */
   }
 </style>

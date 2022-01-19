@@ -5,44 +5,21 @@
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
   import { CustomEase } from "gsap/CustomEase";
   import { onMount } from "svelte";
-  import ImageBackground from "./ImageBackground.svelte";
-  import BasicSeed from "./BasicSeed.svelte";
+  import BirdScene from "./BirdScene.svelte";
   import TextOverlay from "./TextOverlay.svelte";
   import PaperTileBackground from "./PaperTileBackground.svelte";
+  import SeedPathAnimation from "./SeedPathAnimation.svelte";
 
   let overlayVisible = true;
+  let birdSceneVisible = false;
+  let seedAnimationState = 0; 
 
   // init gsap
   gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
   gsap.registerPlugin(CustomEase);
 
   onMount(() => {
-    // const tl = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: "#container",
-    //     pin: true,
-    //     scrub: 1,
-    //     snap: false,
-    //     end: () => "+=" + window.innerWidth * 2,
-    //     onUpdate: (self) => {
-    //       if (self.progress > 0.02) {
-    //         overlayVisible = false;
-    //       }
-    //     },
-    //   },
-    // });
-
-    // tl.to("#container", {
-    //   x: -window.innerWidth * 3,
-    //   ease: "none",
-    // });
-    // tl.to("#background", {
-    //   x: -window.innerWidth * 3,
-    //   ease: "none",
-    // });
-
-    const endPixel = 5000;
-    // // Horizontal Scroll
+    // Horizontal Scroll Foreground
     gsap.to("#container", {
       // xPercent: -100,
       x: -window.innerWidth * 1.4,
@@ -54,38 +31,50 @@
         snap: false,
         end: () => "+=" + window.innerWidth * 3,
         onUpdate: (self) => {
-          if (self.progress > 0.02) {
-            console.log("🚀 ~ file: Scene1.svelte ~ line 58 ~ onMount ~ self.progress", self.progress)
+          if (self.progress < 0.33) {
+            seedAnimationState = Math.floor(self.progress * 3 * 6.99);
+          }
+
+          if (self.progress > 0.04) {
             overlayVisible = false;
-            
+          }
+          if (self.progress == 1) {
+            birdSceneVisible = true;
+          } else {
+            birdSceneVisible = false;
           }
         },
       },
     });
 
+    // Horizontal Scroll Background
     gsap.to("#background", {
-      x: -window.innerWidth*1.4,
+      x: -window.innerWidth * 1.4,
       ease: "none",
       scrollTrigger: {
         trigger: "#background",
         pin: true,
         scrub: 1,
         snap: false,
-        end: () => "+=" +  window.innerWidth * 3,
+        end: () => "+=" + window.innerWidth * 3,
       },
     });
   });
 </script>
 
-<PaperTileBackground widthPx={window.innerWidth * 3000} />
-<!-- <ImageBackground imagePath="/images/paper-background-1.jpeg" /> -->
+<PaperTileBackground widthPx={window.innerWidth * 3} />
+
 <div id="container">
   <img id="window" src="/images/window-new.png" alt="Window" />
-  <BasicSeed />
+  <SeedPathAnimation seedAnimationState={seedAnimationState}/>
 </div>
 
 {#if overlayVisible}
   <TextOverlay text="Scroll down <br> v" />
+{/if}
+
+{#if birdSceneVisible}
+  <BirdScene/>
 {/if}
 
 <div id="trigger" />
@@ -95,9 +84,9 @@
     /* background-color: rgba(235, 217, 135, 0.39); */
 
     height: 100vh;
-    width: 6000vw;
+    width: 600vw;
     /* width: fit-content; */
-    overflow: hidden;
+    /* overflow: hidden; */
 
     position: relative;
 
