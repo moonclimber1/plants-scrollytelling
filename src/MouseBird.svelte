@@ -12,17 +12,15 @@
 	});
 
     function onMouseMove(event){
-        // coords.set({ x: event.clientX, y: event.clientY })
-        console.log("🚀 ~ file: MouseBird.svelte ~ line 16 ~ onMouseMove ~ event.clientY", event.clientY)
-        console.log("🚀 ~ file: MouseBird.svelte ~ line 16 ~ onMouseMove ~ event.clientX", event.clientX)
-        coords.set({ x: $coords.x, y: event.clientY })
+        let x = event.clientX // $coords.x
+        let y = event.clientY
+        coords.set({ x: x, y: y })
     }
 
     var birdImages = ["./images/Bird_full.png"]
     var currentImageIndex = 0
 
     function onBirdClick(){
-        console.log("seed clicked", tl)
         currentImageIndex = (currentImageIndex+1) % birdImages.length;
     }
 </script>
@@ -52,23 +50,8 @@
         width: auto;
 
         position: absolute;
-        top: -50px;
-        left: -35px;
+        top: -20px;
+        left: -120px;
     }
-
-
-    h2 {
-    position: fixed;
-    top: 82vh;
-    width: 100vw;
-
-    margin: 0;
-
-    font-size: xx-large;
-    font-style: normal;
-    line-height: 1.5rem;
-
-    pointer-events: none;
-  }
 
 </style>

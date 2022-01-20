@@ -18,20 +18,20 @@
   // init gsap
   gsap.registerPlugin(ScrollTrigger);
   
-  onMount(() => {
-    console.log("i got mounted")
-    gsap.from("#seed-wrapper", {
-      yPercent: -100,
-      xPercent: -30,
-      scrollTrigger: {
-        trigger: "#seed-wrapper",
-        pin: false,
-        scrub: 1,
-        snap: false,
-        end: () => "+=" + window.innerWidth * 3,
-      },
-    })
-  });
+  // onMount(() => {
+  //   console.log("i got mounted")
+  //   gsap.from("#seed-wrapper", {
+  //     yPercent: -100,
+  //     xPercent: -30,
+  //     scrollTrigger: {
+  //       trigger: "#seed-wrapper",
+  //       pin: false,
+  //       scrub: 1,
+  //       snap: false,
+  //       end: () => "+=" + window.innerWidth * 3,
+  //     },
+  //   })
+  // });
   
 </script>
 

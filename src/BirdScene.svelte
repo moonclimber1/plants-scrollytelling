@@ -19,7 +19,7 @@
 <style>
 
 #bird-scene-container{
-    background-color: rgba(255, 99, 71, 0.1);
+    /* background-color: rgba(255, 99, 71, 0.1); */
     height: 100vh;
     width: 100vw;
     overflow: hidden;
