@@ -12,7 +12,7 @@
 	 
 </script>
 
-<div id="background" class:default-mode={!locomotiveMode} style="--width:{widthPx + "px"}; --height:{heightPx + "px"}; --size:{sizePx + "px"}"></div>
+<div data-scroll id="background" class:default-mode={!locomotiveMode} style="--width:{widthPx + "px"}; --height:{heightPx + "px"}; --size:{sizePx + "px"}"></div>
 
 <style>
 	#background{

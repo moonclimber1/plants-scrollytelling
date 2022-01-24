@@ -41,8 +41,9 @@
 
         /* mix-blend-mode:multiply; */
 
-        /* z-index: 100; */
+        z-index: 100;
         /* background-color: tomato; */
+        
     }
 
     img{

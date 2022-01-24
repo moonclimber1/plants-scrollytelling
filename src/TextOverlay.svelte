@@ -2,6 +2,16 @@
   export let text = "some text";
 
   import { fade } from 'svelte/transition';
+  import { onMount } from 'svelte';
+  import { onDestroy } from 'svelte';
+
+  onMount(() => {
+    console.log("TextOverlay got created: ", text);
+  })
+
+  onDestroy(() => {
+    console.log("TextOverlay got destroyed: ", text);
+  })
 
 </script>
 

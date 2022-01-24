@@ -8,30 +8,8 @@
     "./images/lavendel-emotions/Tear_03.png",
     "./images/lavendel-emotions/Tear_04.png",
     "./images/lavendel-emotions/Tear_05.png",
+    "./images/lavendel-emotions/Lavendel_happy_02.png"
   ];
-
-  // Imports
-  import { onMount } from "svelte";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-  // init gsap
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // onMount(() => {
-  //   console.log("i got mounted")
-  //   gsap.from("#seed-wrapper", {
-  //     yPercent: -100,
-  //     xPercent: -30,
-  //     scrollTrigger: {
-  //       trigger: "#seed-wrapper",
-  //       pin: false,
-  //       scrub: 1,
-  //       snap: false,
-  //       end: () => "+=" + window.innerWidth * 3,
-  //     },
-  //   })
-  // });
   
 </script>
 
@@ -44,8 +22,9 @@
     height: 100px;
     width: auto;
     position: absolute;
-    top: 70vh;
-    left: 40vw;
+    top: 0;
+    left: 0;
+    /* background-color: chartreuse; */
   }
 
   img {

@@ -5,6 +5,7 @@
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
   import { CustomEase } from "gsap/CustomEase";
   import { onMount } from "svelte";
+  import { onDestroy } from 'svelte';
   import BirdScene from "./BirdScene.svelte";
   import TextOverlay from "./TextOverlay.svelte";
   import PaperTileBackground from "./PaperTileBackground.svelte";
@@ -22,10 +23,11 @@
     // Horizontal Scroll Foreground
     gsap.to("#container", {
       // xPercent: -100,
-      x: -window.innerWidth * 1.4,
+      x: -window.innerWidth * 1.35,
       ease: "none",
       scrollTrigger: {
         trigger: "#container",
+        id: "t1",
         pin: true,
         scrub: 1,
         snap: false,
@@ -43,10 +45,11 @@
 
     // Horizontal Scroll Background
     gsap.to("#background", {
-      x: -window.innerWidth * 1.4,
+      x: -window.innerWidth * 1.35,
       ease: "none",
       scrollTrigger: {
         trigger: "#background",
+        id: "t2",
         pin: true,
         scrub: 1,
         snap: false,
@@ -54,12 +57,21 @@
       },
     });
   });
+
+  onDestroy(() => {
+    console.log("Scene 1 got destroyed");
+    ScrollTrigger.getById("t1").kill()
+    ScrollTrigger.getById("t2").kill()
+    // gsap.killTweensOf("#container");
+    // gsap.killTweensOf("#background");
+	});
 </script>
 
-<PaperTileBackground widthPx={window.innerWidth * 3} />
+<PaperTileBackground widthPx={window.innerWidth * 3} heightPx={window.innerHeight*9} />
 
 <div id="container">
-  <img id="window" src="/images/window-new.png" alt="Window" />
+  <img id="window1" src="/images/window-part-1.png" alt="Window" />
+  <img id="window2" src="/images/window-part-2.png" alt="Window" />
   <SeedPathAnimation seedAnimationState={seedAnimationState}/>
 </div>
 
@@ -90,11 +102,22 @@
     mix-blend-mode: multiply;
   }
 
-  img {
+  #window1 {
     position: relative;
     top: -60vh;
 
-    width: 150vw;
+    /* width: 150vw; */
+    height: 112vw;
+  }
+
+  #window2 {
+    position: relative;
+    top: -60vh;
+    left: -26vw;
+
+    /* width: 150vw; */
+    height: 112vw;
+    z-index: 10;
   }
 
   #trigger {
@@ -102,6 +125,7 @@
     height: 20px;
     background-color: green;
     position: absolute;
-    top: 120vh;
+    top: 1000vh;
+    opacity: 0;
   }
 </style>

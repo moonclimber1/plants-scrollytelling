@@ -9,6 +9,8 @@
   import { MotionPathPlugin } from "gsap/MotionPathPlugin";
   import { CustomEase } from "gsap/CustomEase";
   import { onMount } from "svelte";
+  import { onDestroy } from 'svelte';
+  import { activeComponentIndex } from './stores.js';
 
   let scrollOverlayVisible = true;
   let clickOverlayVisible = false;
@@ -28,7 +30,7 @@
         snap: false,
         end: () => "+=" + landscape.offsetWidth * 2,
         onUpdate: (self) => {
-          //console.log("🚀 ~ file: LandscapeScene.svelte ~ line 31 ~ onMount ~ self.progress", self.progress);
+          console.log("🚀 ~ file: LandscapeScene.svelte ~ line 31 ~ onMount ~ self.progress", self.progress);
           scrollOverlayVisible = (self.progress > 0.01) ? false : true;
           clickOverlayVisible = (self.progress > 0.99) ? true : false;
         },
@@ -48,6 +50,12 @@
       },
     });
   });
+
+  onDestroy(() => {
+    console.log("Landscape Scene got destroyed");
+    window.scrollTo(0,0)
+	});
+
 </script>
 
 <PaperTileBackground widthPx={window.innerWidth * 10} heightPx={window.innerHeight} />
@@ -66,6 +74,8 @@
 {/if}
 
 <MouseBird/>
+
+<svelte:window on:click={() => activeComponentIndex.update(n => 2)}/>
 
 
 <style>

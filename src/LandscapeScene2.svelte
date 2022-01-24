@@ -2,7 +2,7 @@
   // Imports
   import PaperTileBackground from "./PaperTileBackground.svelte";
   import MouseBird from "./MouseBird.svelte";
-  import Cloud from "./Cloud.svelte";
+  import Cloud2 from "./Cloud2.svelte";
   import TextOverlay from "./TextOverlay.svelte";
   import { onMount } from "svelte";
   import LocomotiveScroll from "locomotive-scroll";
@@ -18,30 +18,19 @@
       smooth: true,
       direction: "horizontal",
     });
-    console.log("🚀 ~ file: LandscapeScene2.svelte ~ line 18 ~ onMount ~ scroll", scroll);
+    // console.log("🚀 ~ file: LandscapeScene2.svelte ~ line 18 ~ onMount ~ scroll", scroll);
   });
 </script>
 
+<MouseBird/>
 <div data-scroll-container>
-  <div data-scroll data-scroll-speed="-1">
-    <PaperTileBackground locomotiveMode="true" widthPx={window.innerWidth * 10} heightPx={window.innerHeight * 10} />
-    <img id="landscape-image" src="/images/landscape.png" alt="Landscape Illustration" />
+  <PaperTileBackground locomotiveMode="true" widthPx={window.innerHeight * (13912 / 1080)} heightPx={window.innerHeight} />
+  <img data-scroll data-scroll-speed="0" id="landscape-image" src="/images/landscape.png" alt="Landscape Illustration" />
+  <div id="cloud-container" data-scroll data-scroll-speed="4"style="position: absolute; top: 20vh; left: 100vw">
+    <Cloud2/>
   </div>
-  <!-- <div data-scroll data-scroll-speed="-1">
-      
-  </div> -->
 </div>
 
-<!-- <div data-scroll-container>
-  <div data-scroll-section>
-    <h1 data-scroll >Hey</h1>
-    <p data-scroll>👋</p>
-  </div>
-  <div data-scroll-section>
-    <h2 data-scroll data-scroll-speed="10">What's up?</h2>
-    <p data-scroll data-scroll-speed="2">😬</p>
-  </div>
-</div> -->
 
 <!-- {#if scrollOverlayVisible}
   <TextOverlay text="Scroll down <br> v" />
@@ -51,12 +40,23 @@
   <TextOverlay text="Click to continue" />
 {/if} -->
 
-<!-- <MouseBird /> -->
+
 <style>
   #landscape-image {
     height: 100vh;
     width: auto;
-    /* width: calc(100vh * (13912 / 1080)); */
-    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 0px;
+
+    pointer-events: none;
+  }
+
+  #cloud-container {
+    width: fit-content;
+    height: fit-content;
+    mix-blend-mode: multiply;
+
+    pointer-events: none;
   }
 </style>
